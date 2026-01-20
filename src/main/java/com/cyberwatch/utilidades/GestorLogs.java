@@ -24,54 +24,38 @@ import java.util.Date;
  */
 public class GestorLogs {
     
-    //Constante con el nombre del archivo de logs
+    // Constante con el nombre del archivo de logs
     private static final String archivo = "log_sdas.txt";
-    //Formato de fecha y hora para los logs
+    // Formato de fecha y hora para los logs
     private static final SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
     
-    public static void escribirLog(String tipo, String mensaje) {
-        String timestamp = obtenerTimestamp();
+    //AÑADIR synchronized para evitar problemas de concurrencia
+    public static synchronized void escribirLog(String tipo, String mensaje) {
+        // Obtener timestamp
+        String timestamp = formato.format(new Date());
+        
+        // Crear la línea del log
         String lineaLog = String.format("[%s] [%s] %s", timestamp, tipo.toUpperCase(), mensaje);
-        // Escribir en el archivo
-        escribirEnArchivo(lineaLog);
-        // Tambien muestra en consola 
+        
+        // Mostrar en consola
         System.out.println(lineaLog);
-    }
-    
-    /**
-     * Obtiene el timestamp actual en formato HH:mm:ss
-     * 
-     * @return String con la hora actual
-     */
-    private static String obtenerTimestamp() {
-        return formato.format(new Date());
-    }
-    
-    /**
-     * Escribe una línea en el archivo de logs.
-     * Si hay error, lo muestra en consola.
-     * 
-     * @param linea Texto a escribir
-     */
-    private static void escribirEnArchivo(String linea) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true))) {
-            writer.write(linea);
+       
+        // Escribir en el archivo
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(archivo, true));
+            writer.write(lineaLog);
             writer.newLine();
         } catch (IOException e) {
-            System.err.println("❌ Error al escribir en el archivo de logs: " + e.getMessage());
-        }
-    } 
-    
-    /**
-     * Método opcional para limpiar el archivo de logs.
-     * Útil al inicio de una nueva sesión de monitoreo.
-     */
-    public static void limpiarLogs() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
-            writer.write(""); // Vacía el archivo
-            escribirLog("SISTEMA", "Archivo de logs reiniciado");
-        } catch (IOException e) {
-            System.err.println("❌ Error al limpiar el archivo de logs: " + e.getMessage());
+            System.err.println("Error al escribir en el archivo de logs: " + e.getMessage());
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    System.err.println("Error al cerrar el archivo: " + e.getMessage());
+                }
+            }
         }
     }
 }
