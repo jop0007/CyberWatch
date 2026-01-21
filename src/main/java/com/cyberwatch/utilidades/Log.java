@@ -23,14 +23,13 @@ import java.util.Date;
  * Ejemplo: [14:32:10] [INTEGRIDAD] El archivo config.txt ha sido modificado.
  */
 public class Log {
-    
     // Constante con el nombre del archivo de logs
     private static final String archivo = "log_sdas.txt";
     // Formato de fecha y hora para los logs
     private static final SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
     
     //AÑADIR synchronized para evitar problemas de concurrencia
-    public static synchronized void escribirLog(String tipo, String mensaje) {
+    public static synchronized void registrar(String tipo, String mensaje) {
         // Obtener timestamp
         String timestamp = formato.format(new Date());
         
