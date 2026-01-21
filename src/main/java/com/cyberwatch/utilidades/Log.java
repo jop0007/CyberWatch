@@ -22,7 +22,7 @@ import java.util.Date;
  * Formato de log: [HH:mm:ss] [TIPO] mensaje
  * Ejemplo: [14:32:10] [INTEGRIDAD] El archivo config.txt ha sido modificado.
  */
-public class GestorLogs {
+public class Log {
     
     // Constante con el nombre del archivo de logs
     private static final String archivo = "log_sdas.txt";
