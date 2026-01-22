@@ -30,7 +30,7 @@ public class HiloMonitor extends Thread {
         Log.registrar("INTEGRIDAD", "Iniciando monitoreo continuo...");
         
         // Escaneo inicial
-        monitor.escanearInicial();
+        monitor.primerEscaneo();
         
         // Bucle de monitoreo
         while (activo && !isInterrupted()) {
@@ -43,7 +43,7 @@ public class HiloMonitor extends Thread {
                 
             } catch (InterruptedException e) {
                 Log.registrar("INTEGRIDAD", "Monitoreo interrumpido");
-                break;
+                activo=false;
             }
         }
         

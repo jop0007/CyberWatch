@@ -32,7 +32,7 @@ public class MonitorIntegridad {
     /**
      * Realiza el escaneo inicial de la carpeta
      */
-    public void escanearInicial() {
+    public void primerEscaneo() {
         File carpeta = new File(rutaCarpeta);
         
         Log.registrar("INTEGRIDAD", "Realizando escaneo inicial...");
