@@ -1,3 +1,32 @@
 [11:08:13] [INTEGRIDAD] Carpeta Seleccionada: C:\Users\alumno\Documents\DAM 2
 [11:08:51] [INTEGRIDAD] Carpeta Seleccionada: C:\Users\alumno\Documents\DAM 2
 [11:09:45] [INTEGRIDAD] Carpeta Seleccionada: C:\Users\alumno\Documents\DAM 2
+[22:05:52] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos\Datos
+[22:05:54] [INTEGRIDAD] HiloMonitoreo creado (intervalo: 5s)
+[22:05:54] [INTEGRIDAD] Iniciando monitoreo continuo...
+[22:06:14] [INTEGRIDAD] Archivo MODIFICADO: clientes.csv
+[22:06:22] [INTEGRIDAD] Deteniendo monitoreo...
+[22:06:22] [INTEGRIDAD] Monitoreo interrumpido
+[22:06:22] [INTEGRIDAD] Monitoreo finalizado
+[22:14:55] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos\Datos
+[22:15:26] [INTEGRIDAD] HiloMonitoreo creado (intervalo: 5s)
+[22:15:26] [INTEGRIDAD] Iniciando monitoreo continuo...
+[22:15:36] [INTEGRIDAD] Archivo ELIMINADO: proveedores.csv
+[22:15:41] [INTEGRIDAD] Deteniendo monitoreo...
+[22:15:41] [INTEGRIDAD] Monitoreo interrumpido
+[22:15:41] [INTEGRIDAD] Monitoreo finalizado
+[22:16:04] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\Battlefield V\twinkle
+[22:20:46] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\Blackmagic Design
+[22:20:49] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\Audacity
+[22:20:52] [INTEGRIDAD] HiloMonitoreo creado (intervalo: 5s)
+[22:20:52] [INTEGRIDAD] Iniciando monitoreo continuo...
+[22:20:54] [INTEGRIDAD] Deteniendo monitoreo...
+[22:20:54] [INTEGRIDAD] Monitoreo interrumpido
+[22:20:54] [INTEGRIDAD] Monitoreo finalizado
+[22:23:44] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\Nueva carpeta
+[22:24:14] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\Nueva carpeta
+[22:24:15] [INTEGRIDAD] HiloMonitoreo creado (intervalo: 5s)
+[22:24:15] [INTEGRIDAD] Iniciando monitoreo continuo...
+[22:24:21] [INTEGRIDAD] Deteniendo monitoreo...
+[22:24:21] [INTEGRIDAD] Monitoreo interrumpido
+[22:24:21] [INTEGRIDAD] Monitoreo finalizado

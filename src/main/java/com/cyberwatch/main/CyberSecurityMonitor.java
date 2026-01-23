@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.cyberwatch.main;
-import com.cyberwatch.integridad.HiloMonitor;
+import com.cyberwatch.integridad.HiloDetector;
 import com.cyberwatch.utilidades.Log;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -16,16 +16,15 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CyberSecurityMonitor.class.getName());
     // Variables de instancia
-    private HiloMonitor hiloMonitor;
+    private HiloDetector hiloMonitor;
     private String rutaCarpeta;
     /**
      * Creates new form CyberSecurityMonitor
      */
     public CyberSecurityMonitor() {
         initComponents();
-        jLabel4.setText(" Ruta Carpeta: NO SELECCIONADA");
-        btnIniciar1.setEnabled(false);
-        btnFin1.setEnabled(false);
+        btnIniciarMonitor.setEnabled(false);
+        btnFinalizarMonitor.setEnabled(false);
     }
 
     /**
@@ -41,12 +40,11 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSeleccionar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        btnIniciar1 = new javax.swing.JButton();
-        btnFin1 = new javax.swing.JButton();
-        btnLimpiar1 = new javax.swing.JButton();
+        btnIniciarMonitor = new javax.swing.JButton();
+        btnFinalizarMonitor = new javax.swing.JButton();
+        btnLimpiarTxtMonitor = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -83,30 +81,34 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText(" Ruta Carpeta: ");
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel4.setOpaque(true);
-        jLabel4.setPreferredSize(new java.awt.Dimension(91, 30));
-
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        btnIniciar1.setText("Iniciar");
-        btnIniciar1.setPreferredSize(new java.awt.Dimension(72, 30));
-        btnIniciar1.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciarMonitor.setText("Iniciar");
+        btnIniciarMonitor.setPreferredSize(new java.awt.Dimension(72, 30));
+        btnIniciarMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciar1ActionPerformed(evt);
+                btnIniciarMonitorActionPerformed(evt);
             }
         });
 
-        btnFin1.setText("Finalizar");
-        btnFin1.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnFinalizarMonitor.setText("Finalizar");
+        btnFinalizarMonitor.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnFinalizarMonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarMonitorActionPerformed(evt);
+            }
+        });
 
-        btnLimpiar1.setText("Limpiar");
-        btnLimpiar1.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnLimpiarTxtMonitor.setText("Limpiar");
+        btnLimpiarTxtMonitor.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnLimpiarTxtMonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarTxtMonitorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,14 +120,12 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnIniciar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnFin1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnIniciarMonitor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnFinalizarMonitor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLimpiarTxtMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSeleccionar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,23 +133,20 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnIniciar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnIniciarMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 64, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addComponent(btnFinalizarMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLimpiarTxtMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1))))
         );
 
         jTabbedPane1.addTab("Integridad", jPanel1);
@@ -212,9 +209,9 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
                 .addContainerGap())
@@ -311,42 +308,104 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIniciar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciar1ActionPerformed
-        // TODO add your handling code here:
-        if(rutaCarpeta==null||rutaCarpeta.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Primero debes seleccionar una carpeta", "Error", JOptionPane.ERROR_MESSAGE);
+    private void btnIniciarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarMonitorActionPerformed
+        // Validación: verificar que la carpeta sigue siendo válida
+        File carpeta = new File(rutaCarpeta);
+        if (!carpeta.exists() || !carpeta.isDirectory()) {
+            jTextArea1.append("ERROR: La carpeta seleccionada ya no es válida\n");
+
+            // Resetear la selección
+            rutaCarpeta = null;
+            btnIniciarMonitor.setEnabled(false);
             return;
         }
-        File carpeta=new File(rutaCarpeta);
-        if(!carpeta.exists()||!carpeta.isDirectory()){
-            JOptionPane.showMessageDialog(this, "La carpeta seleccionada no es valida", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        hiloMonitor=new HiloMonitor(rutaCarpeta, 1);
-        hiloMonitor.start();
-        jTextArea1.append("Hilo Monitor creado)");
+
+        // Crear el hilo de monitoreo 
+        hiloMonitor = new HiloDetector(rutaCarpeta);
         
-    }//GEN-LAST:event_btnIniciar1ActionPerformed
+        jTextArea1.append("Hilo Monitor creado\n");
+        if (hiloMonitor.getCantidadArchivos() == 0) {
+            jTextArea1.append("La carpeta está vacía, esperando archivos nuevos\n");
+        }else{
+            jTextArea1.append("Archivos totales encontrados en la carpeta: "+hiloMonitor.getCantidadArchivos()+"\n");
+        }
+        // Arrancar el hilo
+        hiloMonitor.start();
+
+        // Actualizar la interfaz
+        jTextArea1.append("Iniciando analisis\n");
+        File log = new File("log_sdas.txt");
+        jTextArea1.append("Consulta los cambios detectados en: "+log.getAbsolutePath()+"\n");
+
+        //Deshabilitar botón Iniciar y Seleccionar
+        btnIniciarMonitor.setEnabled(false);
+        btnSeleccionar.setEnabled(false);
+
+        // Habilitar botón Finalizar
+        btnFinalizarMonitor.setEnabled(true);
+    }//GEN-LAST:event_btnIniciarMonitorActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // TODO add your handling code here:
-        JFileChooser ch=new JFileChooser();
+        // Creo el selector de carpetas
+        JFileChooser ch = new JFileChooser();
         ch.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        ch.setDialogTitle("Selecciona una carpeta");
-        int resultado=ch.showOpenDialog(this);
-        if(resultado==JFileChooser.APPROVE_OPTION){
-            File carpeta=ch.getSelectedFile();
-            rutaCarpeta=carpeta.getAbsolutePath();
-            jLabel4.setText(" Ruta Carpeta: "+rutaCarpeta);
-            jTextArea1.append("Carpeta Seleccionada: "+carpeta.getName()+"\n");
-            btnIniciar1.setEnabled(true);
-            Log.registrar("INTEGRIDAD", "Carpeta Seleccionada: "+rutaCarpeta);
+        ch.setDialogTitle("Seleccionar carpeta");
+
+        // Muestro el diálogo y guardo el resultado
+        int resultado = ch.showOpenDialog(this);
+
+        // Si el usuario seleccionó una carpeta (no canceló)
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File carpeta = ch.getSelectedFile();
+
+            // Validación: verificar que se puede leer
+            if (!carpeta.canRead()) {
+                jTextArea1.append("ERROR: No tienes permisos para leer esta carpeta\n");
+                return;
+            }
+
+            // Todo OK - guardar la ruta seleccionada
+            rutaCarpeta = carpeta.getAbsolutePath();
+
+            // Mostrar en JTextArea
+            jTextArea1.append("Carpeta seleccionada: " + carpeta.getName() + "\n");
+            jTextArea1.append("Ruta: " + rutaCarpeta + "\n");
+
+            // Habilitar el botón Iniciar
+            btnIniciarMonitor.setEnabled(true);
+
+            // Registrar en el log
+            Log.registrar("INTEGRIDAD", "Carpeta seleccionada: " + rutaCarpeta);
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void btnFinalizarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarMonitorActionPerformed
+        // Detener el monitoreo
+        hiloMonitor.detener();
+        // Actualizar la interfaz
+        jTextArea1.append("Analasis finalizado\n");
+        jTextArea1.append("Archivos: "+hiloMonitor.getCantidadArchivos()+"\n");
+        jTextArea1.append("Cambios totales detectados: "+hiloMonitor.getCambios()+"\n");
+        // Mostrar ruta del log
+        File log = new File("log_sdas.txt");
+        jTextArea1.append("Consulta los cambios detectados en: " + log.getAbsolutePath() + "\n");
+
+        // Habilitar botón Iniciar y Seleccionar
+        btnIniciarMonitor.setEnabled(true);
+        btnSeleccionar.setEnabled(true);
+
+        // Deshabilitar botón Finalizar
+        btnFinalizarMonitor.setEnabled(false);
+    }//GEN-LAST:event_btnFinalizarMonitorActionPerformed
+
+    private void btnLimpiarTxtMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarTxtMonitorActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("");
+    }//GEN-LAST:event_btnLimpiarTxtMonitorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,9 +433,9 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFin1;
-    private javax.swing.JButton btnIniciar1;
-    private javax.swing.JButton btnLimpiar1;
+    private javax.swing.JButton btnFinalizarMonitor;
+    private javax.swing.JButton btnIniciarMonitor;
+    private javax.swing.JButton btnLimpiarTxtMonitor;
     private javax.swing.JButton btnSeleccionar;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -386,7 +445,6 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
