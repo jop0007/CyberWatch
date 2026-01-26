@@ -6,9 +6,6 @@ package com.cyberwatch.integridad;
 
 import com.cyberwatch.utilidades.Log;
 
-/**
- * Hilo que ejecuta el monitoreo continuo de integridad
- */
 public class HiloDetector extends Thread {
     private MonitorArchivos monitor;
     private boolean activo;

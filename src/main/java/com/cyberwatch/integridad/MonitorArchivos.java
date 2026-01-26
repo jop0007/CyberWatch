@@ -17,6 +17,7 @@ public class MonitorArchivos {
     private File carpeta;
     private String rutaCarpeta;
     private int cambios;
+    
     public MonitorArchivos(String rutaCarpeta) {
         carpeta=new File(rutaCarpeta);
         File[] archivos = carpeta.listFiles();
