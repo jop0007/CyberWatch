@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cyberwatch.integridad;
+package Archivos;
 
-import com.cyberwatch.utilidades.Log;
+import Logs.Log;
 
 public class HiloDetector extends Thread {
     private MonitorArchivos monitor;
@@ -27,14 +27,10 @@ public class HiloDetector extends Thread {
                 monitor.detectarCambios();
             } catch (InterruptedException e) {
                 Log.registrar("INTEGRIDAD", "Analisis interrumpido");
-                activo=false;
             }
         }
         Log.registrar("INTEGRIDAD", "Analisis finalizado");
-        // Log del total de cambios (solo si hubo cambios)
-        if (monitor.getCambios() > 0) {
-            Log.registrar("INTEGRIDAD", "Cambios totales detectados: " + monitor.getCambios());
-        }
+        Log.registrar("INTEGRIDAD", "Cambios totales detectados: " + monitor.getCambios());
     }
     public void detener() {
         activo = false;

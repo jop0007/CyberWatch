@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.cyberwatch.main;
-import com.cyberwatch.integridad.HiloDetector;
-import com.cyberwatch.utilidades.Log;
+package Main;
+import Archivos.HiloDetector;
+import Trafico.AnalizadorTrafico;
+import Trafico.GeneradorTrafico;
+import Logs.Log;
+import java.io.BufferedReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.io.File;
+import java.io.FileReader;
 /**
  *
  * @author alumno
@@ -18,6 +22,7 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     // Variables de instancia
     private HiloDetector hiloMonitor;
     private String rutaCarpeta;
+    private String rutaArchivoTrafico = "traffic.log";
     /**
      * Creates new form CyberSecurityMonitor
      */
@@ -25,6 +30,8 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         initComponents();
         btnIniciarMonitor.setEnabled(false);
         btnFinalizarMonitor.setEnabled(false);
+        // configuro los jtextareas para los logs
+        Log.setTextAreas(jTextArea1, jTextArea2, jTextArea3);
     }
 
     /**
@@ -44,12 +51,10 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         btnIniciarMonitor = new javax.swing.JButton();
         btnFinalizarMonitor = new javax.swing.JButton();
-        btnLimpiarTxtMonitor = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnGenerar = new javax.swing.JButton();
+        btnAnalizar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
@@ -101,14 +106,6 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
             }
         });
 
-        btnLimpiarTxtMonitor.setText("Limpiar");
-        btnLimpiarTxtMonitor.setPreferredSize(new java.awt.Dimension(75, 30));
-        btnLimpiarTxtMonitor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarTxtMonitorActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,10 +118,9 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnIniciarMonitor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnFinalizarMonitor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiarTxtMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSeleccionar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,12 +136,11 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                         .addComponent(btnIniciarMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFinalizarMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLimpiarTxtMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(70, Short.MAX_VALUE))
+                        .addContainerGap(207, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
 
         jTabbedPane1.addTab("Integridad", jPanel1);
@@ -159,13 +154,20 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel2.setOpaque(true);
 
-        jButton5.setText("Generar");
+        btnGenerar.setText("Generar");
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Limpiar");
-        jButton6.setPreferredSize(new java.awt.Dimension(75, 30));
-
-        jButton7.setText("Analizar");
-        jButton7.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnAnalizar.setText("Analizar");
+        btnAnalizar.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizarActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
@@ -179,12 +181,11 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnAnalizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                            .addComponent(btnGenerar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2)))
                 .addContainerGap())
@@ -197,13 +198,12 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(106, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)))
+                        .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Tráfico", jPanel2);
@@ -248,7 +248,7 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
@@ -274,7 +274,7 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 66, Short.MAX_VALUE))
+                        .addGap(0, 167, Short.MAX_VALUE))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
         );
@@ -285,20 +285,17 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarMonitorActionPerformed
-        // Validación: verificar que la carpeta sigue siendo válida
         File carpeta = new File(rutaCarpeta);
         if (!carpeta.exists() || !carpeta.isDirectory()) {
             jTextArea1.append("ERROR: La carpeta seleccionada ya no es válida\n");
@@ -308,11 +305,9 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
             btnIniciarMonitor.setEnabled(false);
             return;
         }
-
         // Crear el hilo de monitoreo 
         hiloMonitor = new HiloDetector(rutaCarpeta);
         
-        jTextArea1.append("Hilo Monitor creado\n");
         if (hiloMonitor.getCantidadArchivos() == 0) {
             jTextArea1.append("La carpeta está vacía, esperando archivos nuevos\n");
         }else{
@@ -320,16 +315,9 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         }
         // Arrancar el hilo
         hiloMonitor.start();
-
-        // Actualizar la interfaz
-        jTextArea1.append("Iniciando analisis\n");
-        File log = new File("log_sdas.txt");
-        jTextArea1.append("Consulta los cambios detectados en: "+log.getAbsolutePath()+"\n");
-
         //Deshabilitar botón Iniciar y Seleccionar
         btnIniciarMonitor.setEnabled(false);
         btnSeleccionar.setEnabled(false);
-
         // Habilitar botón Finalizar
         btnFinalizarMonitor.setEnabled(true);
     }//GEN-LAST:event_btnIniciarMonitorActionPerformed
@@ -356,14 +344,10 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                 jTextArea1.append("ERROR: No tienes permisos para leer esta carpeta\n");
                 return;
             }
-
             // Todo OK - guardar la ruta seleccionada
             rutaCarpeta = carpeta.getAbsolutePath();
-
             // Mostrar en JTextArea
             jTextArea1.append("Carpeta seleccionada: " + carpeta.getName() + "\n");
-            jTextArea1.append("Ruta: " + rutaCarpeta + "\n");
-
             // Habilitar el botón Iniciar
             btnIniciarMonitor.setEnabled(true);
 
@@ -375,26 +359,47 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     private void btnFinalizarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarMonitorActionPerformed
         // Detener el monitoreo
         hiloMonitor.detener();
-        // Actualizar la interfaz
-        jTextArea1.append("Analasis finalizado\n");
-        jTextArea1.append("Archivos: "+hiloMonitor.getCantidadArchivos()+"\n");
-        jTextArea1.append("Cambios totales detectados: "+hiloMonitor.getCambios()+"\n");
-        // Mostrar ruta del log
-        File log = new File("log_sdas.txt");
-        jTextArea1.append("Consulta los cambios detectados en: " + log.getAbsolutePath() + "\n");
-
         // Habilitar botón Iniciar y Seleccionar
         btnIniciarMonitor.setEnabled(true);
         btnSeleccionar.setEnabled(true);
-
         // Deshabilitar botón Finalizar
         btnFinalizarMonitor.setEnabled(false);
     }//GEN-LAST:event_btnFinalizarMonitorActionPerformed
 
-    private void btnLimpiarTxtMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarTxtMonitorActionPerformed
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText("");
-    }//GEN-LAST:event_btnLimpiarTxtMonitorActionPerformed
+        // genero el archivo con 30 paquetes
+        GeneradorTrafico generador = new GeneradorTrafico();
+        generador.generarArchivo(rutaArchivoTrafico, 30);
+        // ahora leo el archivo generado y lo muestro en el textarea
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(rutaArchivoTrafico));
+            String linea;
+
+            jTextArea2.append("\n--- REGISTROS GENERADOS ---\n");
+            while ((linea = reader.readLine()) != null) {
+                jTextArea2.append(linea + "\n");
+            }
+            jTextArea2.append("--- FIN REGISTROS ---\n\n");
+
+            reader.close();
+        } catch (Exception e) {
+            jTextArea2.append("Error al leer archivo: " + e.getMessage() + "\n");
+        }
+    }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
+        // TODO add your handling code here:
+        // verifico que existe el archivo
+        File archivo = new File(rutaArchivoTrafico);
+        if (!archivo.exists()) {
+            jTextArea2.append("ERROR: Primero debes generar el archivo\n");
+            return;
+        }
+        // analizo el archivo
+        AnalizadorTrafico analizador = new AnalizadorTrafico();
+        int anomalias = analizador.analizarArchivo(rutaArchivoTrafico);
+    }//GEN-LAST:event_btnAnalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,13 +427,11 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalizar;
     private javax.swing.JButton btnFinalizarMonitor;
+    private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnIniciarMonitor;
-    private javax.swing.JButton btnLimpiarTxtMonitor;
     private javax.swing.JButton btnSeleccionar;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
