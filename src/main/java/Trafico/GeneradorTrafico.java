@@ -8,7 +8,7 @@ import java.util.Random;
 public class GeneradorTrafico {
     
     public void generarArchivo(String ruta, int cantidad) {
-        Log.registrar("TRAFICO", "Generando archivo...");
+        Log.registrar("RED", "Generando archivo de trafico...");
         
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
@@ -17,7 +17,7 @@ public class GeneradorTrafico {
             int hora = 14;
             int minuto = 30;
             int segundo = 0;
-            int frame = 1;  // contador de frames
+            int frame = 1;
             
             for (int i = 0; i < cantidad; i++) {
                 String tiempo = String.format("[%02d:%02d:%02d]", hora, minuto, segundo);
@@ -27,7 +27,7 @@ public class GeneradorTrafico {
                 int puerto = 443;
                 int bytes = 500 + random.nextInt(1500);
                 
-                // trafico normal
+                // genero trafico normal
                 int tipo = random.nextInt(100);
                 if (tipo < 50) {
                     puerto = 80;
@@ -35,7 +35,7 @@ public class GeneradorTrafico {
                     puerto = 443;
                 }
                 
-                // anomalia 1: puertos sospechosos
+                // ANOMALIA 1: puertos sospechosos
                 if (i % 5 == 0 && i > 0) {
                     ipOrigen = "10.0.0.5";
                     ipDestino = "192.168.1.100";
@@ -48,13 +48,14 @@ public class GeneradorTrafico {
                     else puerto = 12345;
                 }
                 
-                // escribo la linea CON FRAME
-                String linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + ipDestino + " " + protocolo + " " + puerto + " " + bytes;
+                // escribo la linea
+                String linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + 
+                              ipDestino + " " + protocolo + " " + puerto + " " + bytes;
                 writer.write(linea);
                 writer.newLine();
                 frame++;
                 
-                // anomalia 2: ips repetidas
+                // ANOMALIA 2: ips repetidas (escaneo)
                 if (i == 10) {
                     ipOrigen = "45.123.67.89";
                     for (int j = 0; j < 6; j++) {
@@ -62,30 +63,32 @@ public class GeneradorTrafico {
                         tiempo = String.format("[%02d:%02d:%02d]", hora, minuto, segundo);
                         ipDestino = "192.168.1." + (100 + random.nextInt(4));
                         puerto = 22 + (j * 10);
-                        linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + ipDestino + " " + protocolo + " " + puerto + " " + bytes;
+                        linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + 
+                               ipDestino + " " + protocolo + " " + puerto + " " + bytes;
                         writer.write(linea);
                         writer.newLine();
                         frame++;
                     }
                 }
                 
-                // anomalia 3: muchas conexiones en poco tiempo
+                // ANOMALIA 3: muchas conexiones en el mismo segundo
                 if (i == 20) {
                     ipOrigen = "203.0.113.42";
                     ipDestino = "192.168.1.100";
                     for (int j = 0; j < 4; j++) {
                         tiempo = String.format("[%02d:%02d:%02d]", hora, minuto, segundo);
-                        linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + ipDestino + " " + protocolo + " " + 80 + " " + bytes;
+                        linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + 
+                               ipDestino + " " + protocolo + " " + 80 + " " + bytes;
                         writer.write(linea);
                         writer.newLine();
                         frame++;
                     }
                 }
                 
-                // siguiente segundo
+                // avanzo el tiempo
                 segundo++;
                 
-                // ajustar tiempo
+                // ajusto minutos y horas si es necesario
                 if (segundo >= 60) {
                     segundo = segundo - 60;
                     minuto++;
@@ -98,10 +101,10 @@ public class GeneradorTrafico {
             
             writer.close();
             
-            Log.registrar("TRAFICO", "Archivo generado: " + (frame - 1) + " frames");
+            Log.registrar("RED", "Archivo generado con " + (frame - 1) + " frames");
             
         } catch (Exception e) {
-            Log.registrar("TRAFICO", "Error: " + e.getMessage());
+            Log.registrar("RED", "Error al generar archivo: " + e.getMessage());
         }
     }
 }

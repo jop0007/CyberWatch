@@ -72,3 +72,161 @@
 [22:31:44] [TRAFICO] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
 [22:31:44] [TRAFICO] Analisis completado: 40 frames analizados
 [22:31:44] [TRAFICO] Anomalias detectadas: 10
+[18:02:35] [RED] Generando archivo de trafico...
+[18:02:35] [RED] Archivo generado con 40 frames
+[18:03:58] [RED] Analizando trafico...
+[18:03:58] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:03:58] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:03:58] [RED] Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:03:58] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[18:03:58] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:03:58] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:03:58] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:03:58] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:03:58] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:03:58] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:03:58] [RED] Analisis completado: 40 frames analizados
+[18:03:58] [RED] Anomalias detectadas: 10
+[18:04:03] [RED] Generando archivo de trafico...
+[18:04:03] [RED] Archivo generado con 40 frames
+[18:04:05] [RED] Analizando trafico...
+[18:04:05] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:04:05] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:04:05] [RED] Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:04:05] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[18:04:05] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:04:05] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:04:05] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:04:05] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:04:05] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:04:05] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[18:04:05] [RED] Analisis completado: 40 frames analizados
+[18:04:05] [RED] Anomalias detectadas: 10
+[18:05:55] [RED] Generando archivo de trafico...
+[18:05:55] [RED] Archivo generado con 40 frames
+[18:05:55] [RED] Analizando trafico...
+[18:05:55] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:05:55] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:05:55] [RED] Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:05:55] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:05:55] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:05:55] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:05:55] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:05:55] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:05:55] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:05:55] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:05:55] [RED] Analisis completado: 40 frames analizados
+[18:05:55] [RED] Anomalias detectadas: 10
+[18:07:07] [RED] Generando archivo de trafico...
+[18:07:07] [RED] Archivo generado con 40 frames
+[18:07:08] [RED] Analizando trafico...
+[18:07:08] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:07:08] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:07:08] [RED] Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:07:08] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:07:08] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:07:08] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:07:08] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:07:08] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:07:08] [RED] Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:07:08] [RED] Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:07:08] [RED] Analisis completado: 40 frames analizados
+[18:07:08] [RED] Anomalias detectadas: 10
+[18:12:10] [RED] Generando archivo de trafico...
+[18:12:10] [RED] Archivo generado con 40 frames
+[18:12:11] [RED] Analizando trafico...
+[18:12:11] [RED] Frame 6 [14:30:05]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:12:11] [RED] Frame 11 [14:30:10]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:12:11] [RED] Frame 16 [14:30:15]: Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:12:11] [RED] Frame 22 [14:30:21]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:12:11] [RED] Frame 27 [14:30:26]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:12:11] [RED] Frame 28 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:11] [RED] Frame 29 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:11] [RED] Frame 30 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:11] [RED] Frame 31 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:11] [RED] Frame 36 [14:30:31]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:12:11] [RED] Analisis completado: 40 frames analizados
+[18:12:11] [RED] Anomalias detectadas: 10
+[18:12:46] [RED] Generando archivo de trafico...
+[18:12:46] [RED] Archivo generado con 40 frames
+[18:12:47] [RED] Analizando trafico...
+[18:12:47] [RED] Frame 6 [14:30:05]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:12:47] [RED] Frame 11 [14:30:10]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:12:47] [RED] Frame 16 [14:30:15]: Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:12:47] [RED] Frame 22 [14:30:21]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:12:47] [RED] Frame 27 [14:30:26]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[18:12:47] [RED] Frame 28 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:47] [RED] Frame 29 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:47] [RED] Frame 30 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:47] [RED] Frame 31 [14:30:26]: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:12:47] [RED] Frame 36 [14:30:31]: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:12:47] [RED] Analisis completado: 40 frames analizados
+[18:12:47] [RED] Anomalias detectadas: 10
+[18:16:33] [RED] Generando archivo de trafico...
+[18:16:33] [RED] Archivo generado con 40 frames
+[18:16:35] [RED] Analizando trafico...
+[18:16:35] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:16:35] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:16:35] [RED] Frame 16: Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:16:35] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[18:16:35] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[18:16:35] [RED] Frame 28: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:16:35] [RED] Frame 29: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:16:35] [RED] Frame 30: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:16:35] [RED] Frame 31: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:16:35] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:16:35] [RED] Analisis completado: 40 frames analizados
+[18:16:35] [RED] Anomalias detectadas: 10
+[18:17:23] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos\Datos
+[18:17:28] [INTEGRIDAD] Monitor iniciado
+[18:17:28] [INTEGRIDAD] Escaneo inicial completado: 6 archivos
+[18:17:28] [INTEGRIDAD] Hilo detector creado
+[18:17:28] [INTEGRIDAD] Iniciando monitoreo continuo
+[18:18:40] [INTEGRIDAD] El archivo nuevo.csv ha sido modificado
+[18:18:43] [INTEGRIDAD] Deteniendo monitoreo...
+[18:18:46] [INTEGRIDAD] Monitoreo finalizado
+[18:18:46] [INTEGRIDAD] Total de cambios detectados: 1
+[18:18:56] [RED] Generando archivo de trafico...
+[18:18:56] [RED] Archivo generado con 40 frames
+[18:18:57] [RED] Analizando trafico...
+[18:18:57] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[18:18:57] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:18:57] [RED] Frame 16: Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[18:18:57] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[18:18:57] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[18:18:57] [RED] Frame 28: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:18:57] [RED] Frame 29: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:18:57] [RED] Frame 30: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:18:57] [RED] Frame 31: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[18:18:57] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[18:18:57] [RED] Analisis completado: 40 frames analizados
+[18:18:57] [RED] Anomalias detectadas: 10
+[19:52:44] [PROCESOS] Iniciando simulacion de procesos
+[19:52:44] [PROCESOS] No se encontro lista negra previa
+[19:52:44] [PROCESOS] 5 procesos creados
+[19:53:02] [PROCESOS] Proceso botnet.exe excede uso de CPU (86% durante 17 segundos)
+[19:53:02] [PROCESOS] Proceso botnet.exe añadido a lista negra
+[19:53:02] [PROCESOS] Proceso cryptolocker.exe excede uso de CPU (97% durante 18 segundos)
+[19:53:02] [PROCESOS] Proceso cryptolocker.exe añadido a lista negra
+[19:53:02] [PROCESOS] Proceso rat.exe excede uso de CPU (91% durante 18 segundos)
+[19:53:02] [PROCESOS] Proceso rat.exe añadido a lista negra
+[19:53:53] [PROCESOS] Simulacion finalizada
+[19:53:53] [PROCESOS] Procesos eliminados: 3
+[19:53:58] [PROCESOS] Iniciando simulacion de procesos
+[19:53:58] [PROCESOS] Lista negra cargada: 3 procesos
+[19:53:58] [PROCESOS] 5 procesos creados
+[19:54:01] [PROCESOS] Proceso botnet.exe eliminado (encontrado en lista negra)
+[19:54:16] [PROCESOS] Proceso worm.exe excede uso de CPU (89% durante 17 segundos)
+[19:54:16] [PROCESOS] Proceso worm.exe añadido a lista negra
+[19:54:16] [PROCESOS] Proceso rootkit.exe excede uso de CPU (90% durante 18 segundos)
+[19:54:16] [PROCESOS] Proceso rootkit.exe añadido a lista negra
+[19:54:16] [PROCESOS] Proceso backdoor.exe excede uso de CPU (88% durante 18 segundos)
+[19:54:16] [PROCESOS] Proceso backdoor.exe añadido a lista negra
+[19:54:30] [PROCESOS] Simulacion finalizada
+[19:54:30] [PROCESOS] Procesos eliminados: 4
+[19:54:35] [PROCESOS] Iniciando simulacion de procesos
+[19:54:35] [PROCESOS] Lista negra cargada: 6 procesos
+[19:54:35] [PROCESOS] 5 procesos creados
+[19:54:38] [PROCESOS] Proceso rat.exe eliminado (encontrado en lista negra)
+[19:54:48] [PROCESOS] Simulacion finalizada
+[19:54:48] [PROCESOS] Procesos eliminados: 1

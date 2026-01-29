@@ -56,7 +56,7 @@ public class Log {
         // escribo en el jtextarea correspondiente
         if (tipo.equalsIgnoreCase("INTEGRIDAD") && textAreaIntegridad != null) {
             textAreaIntegridad.append(lineaLog + "\n");
-        } else if (tipo.equalsIgnoreCase("TRAFICO") && textAreaTrafico != null) {
+        } else if (tipo.equalsIgnoreCase("RED") && textAreaTrafico != null) {  // ← CAMBIO AQUÍ
             textAreaTrafico.append(lineaLog + "\n");
         } else if (tipo.equalsIgnoreCase("PROCESOS") && textAreaProcesos != null) {
             textAreaProcesos.append(lineaLog + "\n");

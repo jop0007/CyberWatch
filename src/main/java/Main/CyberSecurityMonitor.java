@@ -7,6 +7,7 @@ import Archivos.HiloDetector;
 import Trafico.AnalizadorTrafico;
 import Trafico.GeneradorTrafico;
 import Logs.Log;
+import Procesos.MonitorProcesos;
 import java.io.BufferedReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -19,10 +20,10 @@ import java.io.FileReader;
 public class CyberSecurityMonitor extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CyberSecurityMonitor.class.getName());
-    // Variables de instancia
     private HiloDetector hiloMonitor;
     private String rutaCarpeta;
     private String rutaArchivoTrafico = "traffic.log";
+    private MonitorProcesos monitorProcesos;
     /**
      * Creates new form CyberSecurityMonitor
      */
@@ -30,8 +31,8 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         initComponents();
         btnIniciarMonitor.setEnabled(false);
         btnFinalizarMonitor.setEnabled(false);
-        // configuro los jtextareas para los logs
         Log.setTextAreas(jTextArea1, jTextArea2, jTextArea3);
+        btnFinalizarProcesos.setEnabled(false);
     }
 
     /**
@@ -59,8 +60,8 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnIniciarProcesos = new javax.swing.JButton();
+        btnFinalizarProcesos = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
@@ -217,16 +218,21 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel3.setOpaque(true);
 
-        jButton8.setText("Iniciar");
-        jButton8.setPreferredSize(new java.awt.Dimension(72, 30));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciarProcesos.setText("Iniciar");
+        btnIniciarProcesos.setPreferredSize(new java.awt.Dimension(72, 30));
+        btnIniciarProcesos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnIniciarProcesosActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Finalizar");
-        jButton9.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnFinalizarProcesos.setText("Finalizar");
+        btnFinalizarProcesos.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnFinalizarProcesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarProcesosActionPerformed(evt);
+            }
+        });
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
@@ -251,8 +257,8 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnFinalizarProcesos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                            .addComponent(btnIniciarProcesos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,9 +273,9 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnIniciarProcesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFinalizarProcesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -289,7 +295,7 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -307,12 +313,6 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         }
         // Crear el hilo de monitoreo 
         hiloMonitor = new HiloDetector(rutaCarpeta);
-        
-        if (hiloMonitor.getCantidadArchivos() == 0) {
-            jTextArea1.append("La carpeta está vacía, esperando archivos nuevos\n");
-        }else{
-            jTextArea1.append("Archivos totales encontrados en la carpeta: "+hiloMonitor.getCantidadArchivos()+"\n");
-        }
         // Arrancar el hilo
         hiloMonitor.start();
         //Deshabilitar botón Iniciar y Seleccionar
@@ -322,9 +322,20 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         btnFinalizarMonitor.setEnabled(true);
     }//GEN-LAST:event_btnIniciarMonitorActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnIniciarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarProcesosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        // boton Iniciar Procesos
+        monitorProcesos = new MonitorProcesos();
+        monitorProcesos.iniciar();
+
+        jTextArea3.append("Monitor de procesos iniciado\n");
+        jTextArea3.append("Procesos activos: " + monitorProcesos.getCantidadProcesos() + "\n");
+
+        // deshabilitar boton Iniciar
+        btnIniciarProcesos.setEnabled(false);
+        // habilitar boton Finalizar
+        btnFinalizarProcesos.setEnabled(true);
+    }//GEN-LAST:event_btnIniciarProcesosActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         // Creo el selector de carpetas
@@ -399,7 +410,24 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         // analizo el archivo
         AnalizadorTrafico analizador = new AnalizadorTrafico();
         int anomalias = analizador.analizarArchivo(rutaArchivoTrafico);
+        jTextArea2.append("--- ANÁLISIS COMPLETADO ---\n");
+        jTextArea2.append("Total de anomalías detectadas: " + anomalias + "\n\n");
     }//GEN-LAST:event_btnAnalizarActionPerformed
+
+    private void btnFinalizarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarProcesosActionPerformed
+        // TODO add your handling code here:
+        // boton Finalizar Procesos
+        if (monitorProcesos != null) {
+            monitorProcesos.detener();
+            jTextArea3.append("Monitor de procesos finalizado\n");
+            jTextArea3.append("Procesos eliminados: " + monitorProcesos.getProcesosEliminados() + "\n");
+        }
+
+        // habilitar boton Iniciar
+        btnIniciarProcesos.setEnabled(true);
+        // deshabilitar boton Finalizar
+        btnFinalizarProcesos.setEnabled(false);
+    }//GEN-LAST:event_btnFinalizarProcesosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -429,11 +457,11 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalizar;
     private javax.swing.JButton btnFinalizarMonitor;
+    private javax.swing.JButton btnFinalizarProcesos;
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnIniciarMonitor;
+    private javax.swing.JButton btnIniciarProcesos;
     private javax.swing.JButton btnSeleccionar;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

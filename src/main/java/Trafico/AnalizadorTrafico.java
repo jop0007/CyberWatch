@@ -3,28 +3,20 @@ package Trafico;
 import Logs.Log;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AnalizadorTrafico {
     
     public int analizarArchivo(String ruta) {
-        Log.registrar("TRAFICO", "Analizando trafico...");
+        Log.registrar("RED", "Analizando trafico...");
         
         int totalPaquetes = 0;
         int anomalias = 0;
         
-        // variables para comparar
+        // guardo la ip anterior para compararla
         String ipAnterior = "";
         int vecesRepetida = 0;
-        int segundoAnterior = -1;
-        
-        // regex para detectar puertos sospechosos
-        Pattern patronPuertosSospechosos = Pattern.compile(".* (31337|4444|1337|6667|12345) .*");
-        
-        // regex para capturar frame, tiempo, ips y puerto
-        // Frame 1 [14:30:05] 192.168.1.100 8.8.8.8 TCP 443 1024
-        Pattern patronCompleto = Pattern.compile("Frame (\\d+) \\[(\\d{2}):(\\d{2}):(\\d{2})\\] (\\S+) (\\S+) \\w+ (\\d+) \\d+");
+        // guardo el tiempo anterior
+        String tiempoAnterior = "";
         
         try {
             BufferedReader reader = new BufferedReader(new FileReader(ruta));
@@ -33,62 +25,62 @@ public class AnalizadorTrafico {
             while ((linea = reader.readLine()) != null) {
                 totalPaquetes++;
                 
-                // capturo todos los datos de la linea
-                Matcher matcherCompleto = patronCompleto.matcher(linea);
+                // separo la linea por espacios
+                String[] partes = linea.split(" ");
                 
-                if (matcherCompleto.find()) {
-                    int frame = Integer.parseInt(matcherCompleto.group(1));
-                    // grupo 2 = hora
-                    // grupo 3 = minuto
-                    int segundo = Integer.parseInt(matcherCompleto.group(4));  // grupo 4 = segundo
-                    String ipOrigen = matcherCompleto.group(5);  // grupo 5 = ip origen
-                    String ipDestino = matcherCompleto.group(6);  // grupo 6 = ip destino
-                    String puerto = matcherCompleto.group(7);  // grupo 7 = puerto
+                // saco los datos que necesito de cada posicion
+                // la linea es: Frame 1 [14:30:01] 192.168.1.100 8.8.8.8 TCP 443 1024
+                String frame = partes[1];
+                String tiempo = partes[2];
+                String ipOrigen = partes[3];
+                String ipDestino = partes[4];
+                String puerto = partes[6];
+                
+                // busco puertos sospechosos
+                if (puerto.equals("31337") || puerto.equals("4444") || 
+                    puerto.equals("1337") || puerto.equals("6667") || 
+                    puerto.equals("12345")) {
                     
-                    // ===================================================================
-                    // DETECCION 1: PUERTOS SOSPECHOSOS
-                    // ===================================================================
-                    Matcher matcherPuerto = patronPuertosSospechosos.matcher(linea);
-                    if (matcherPuerto.matches()) {
-                        Log.registrar("TRAFICO", "Frame " + frame + ": Conexion sospechosa detectada desde " + ipOrigen + " al puerto " + puerto);
+                    Log.registrar("RED", "Frame " + frame + 
+                                 ": Conexion sospechosa detectada desde " + 
+                                 ipOrigen + " al puerto " + puerto);
+                    anomalias++;
+                }
+                
+                // detecto si la misma ip se repite muchas veces seguidas
+                if (ipOrigen.equals(ipAnterior)) {
+                    vecesRepetida++;
+                    // si se repite 5 veces es un escaneo
+                    if (vecesRepetida == 5) {
+                        Log.registrar("RED", "Frame " + frame + 
+                                     ": Escaneo detectado desde " + ipOrigen + 
+                                     " (5+ conexiones consecutivas)");
                         anomalias++;
                     }
-                    
-                    // ===================================================================
-                    // DETECCION 2: IPS REPETIDAS
-                    // ===================================================================
-                    if (ipOrigen.equals(ipAnterior)) {
-                        vecesRepetida++;
-                        if (vecesRepetida == 5) {
-                            Log.registrar("TRAFICO", "Frame " + frame + ": Escaneo detectado desde " + ipOrigen + " (5+ conexiones consecutivas)");
-                            anomalias++;
-                        }
-                    } else {
-                        vecesRepetida = 0;
-                    }
-                    ipAnterior = ipOrigen;
-                    
-                    // ===================================================================
-                    // DETECCION 3: INTERVALOS DE TIEMPO ANOMALOS
-                    // ===================================================================
-                    if (segundoAnterior != -1) {
-                        int diferencia = segundo - segundoAnterior;
-                        if (diferencia <= 0) {
-                            Log.registrar("TRAFICO", "Frame " + frame + ": Trafico anomalo desde " + ipOrigen + " (multiples conexiones en el mismo segundo)");
-                            anomalias++;
-                        }
-                    }
-                    segundoAnterior = segundo;
+                } else {
+                    vecesRepetida = 1;
                 }
+                ipAnterior = ipOrigen;
+                
+                // detecto si hay varias conexiones en el mismo segundo
+                if (!tiempoAnterior.equals("")) {
+                    if (tiempo.equals(tiempoAnterior)) {
+                        Log.registrar("RED", "Frame " + frame + 
+                                     ": Trafico anomalo desde " + ipOrigen + 
+                                     " (multiples conexiones en el mismo segundo)");
+                        anomalias++;
+                    }
+                }
+                tiempoAnterior = tiempo;
             }
             
             reader.close();
             
-            Log.registrar("TRAFICO", "Analisis completado: " + totalPaquetes + " frames analizados");
-            Log.registrar("TRAFICO", "Anomalias detectadas: " + anomalias);
+            Log.registrar("RED", "Analisis completado: " + totalPaquetes + " frames analizados");
+            Log.registrar("RED", "Anomalias detectadas: " + anomalias);
             
         } catch (Exception e) {
-            Log.registrar("TRAFICO", "Error: " + e.getMessage());
+            Log.registrar("RED", "Error al analizar: " + e.getMessage());
         }
         
         return anomalias;
