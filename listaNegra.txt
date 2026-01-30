@@ -1,7 +1,0 @@
-ddos.exe
-cryptolocker.exe
-trojan.exe
-miner.exe
-adware.exe
-rootkit.exe
-keylogger.exe

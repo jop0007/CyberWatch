@@ -18,7 +18,6 @@ import java.io.FileReader;
  * @author Valentin
  */
 public class CyberSecurityMonitor extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CyberSecurityMonitor.class.getName());
     private HiloDetector hiloMonitor;
     private String rutaCarpeta;
@@ -31,6 +30,7 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         initComponents();
         btnIniciarMonitor.setEnabled(false);
         btnFinalizarMonitor.setEnabled(false);
+        //Paso objetos como referencia
         Log.setTextAreas(jTextArea1, jTextArea2, jTextArea3);
         btnFinalizarProcesos.setEnabled(false);
     }
@@ -302,75 +302,58 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarMonitorActionPerformed
-        File carpeta = new File(rutaCarpeta);
-        if (!carpeta.exists() || !carpeta.isDirectory()) {
-            jTextArea1.append("ERROR: La carpeta seleccionada ya no es válida\n");
-            //Resetear la selección
-            rutaCarpeta = null;
-            btnIniciarMonitor.setEnabled(false);
-            return;
-        }
-        // Crear el hilo de monitoreo 
+        //creo el hilo de monitoreo
         hiloMonitor = new HiloDetector(rutaCarpeta);
-        // Arrancar el hilo
+        // arranco el hilo
         hiloMonitor.start();
-        //Deshabilitar botón Iniciar y Seleccionar
+        //deshabilito boton
         btnIniciarMonitor.setEnabled(false);
         btnSeleccionar.setEnabled(false);
-        // Habilitar botón Finalizar
+        //habilito boton
         btnFinalizarMonitor.setEnabled(true);
     }//GEN-LAST:event_btnIniciarMonitorActionPerformed
 
     private void btnIniciarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarProcesosActionPerformed
         // TODO add your handling code here:
-        // boton Iniciar Procesos
+        //boton iniciar
         monitorProcesos = new MonitorProcesos();
         monitorProcesos.iniciar();
-        jTextArea3.append("Monitor de procesos iniciado\n");
-        jTextArea3.append("Procesos activos: " + monitorProcesos.getCantidadProcesos() + "\n");
-        // deshabilitar boton Iniciar
+        //deshabilito boton 
         btnIniciarProcesos.setEnabled(false);
-        // habilitar boton Finalizar
+        // habilito boton 
         btnFinalizarProcesos.setEnabled(true);
     }//GEN-LAST:event_btnIniciarProcesosActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // Creo el selector de carpetas
+        //creo el selector de carpetas
         JFileChooser ch = new JFileChooser();
         ch.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         ch.setDialogTitle("Seleccionar carpeta");
-        //Muestro el diálogo y guardo el resultado
+        //guardo el resultado
         int resultado = ch.showOpenDialog(this);
-        //Si el usuario seleccionó una carpeta 
+        //si el usuario seleccionó una carpeta
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File carpeta = ch.getSelectedFile();
-            // Validación: verificar que se puede leer
-            if (!carpeta.canRead()) {
-                jTextArea1.append("ERROR: No tienes permisos para leer esta carpeta\n");
-                return;
-            }
-            //guardar la ruta seleccionada
+            // guardo la ruta seleccionada
             rutaCarpeta = carpeta.getAbsolutePath();
-            //Mostrar en JTextArea
+            // muestro en TextArea
             jTextArea1.append("Carpeta seleccionada: " + carpeta.getName() + "\n");
-            //Habilitar el botón Iniciar
+            // habilito el boton
             btnIniciarMonitor.setEnabled(true);
-            Log.registrar("INTEGRIDAD", "Carpeta seleccionada: " + rutaCarpeta);
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void btnFinalizarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarMonitorActionPerformed
-        // Detener el monitoreo
+        //Detener el monitoreo
         hiloMonitor.detener();
-        // Habilitar botón Iniciar y Seleccionar
+        //Habilito boto iniciar y seleccionar
         btnIniciarMonitor.setEnabled(true);
         btnSeleccionar.setEnabled(true);
-        // Deshabilitar botón Finalizar
+        //Deshabilito boton finalizar
         btnFinalizarMonitor.setEnabled(false);
     }//GEN-LAST:event_btnFinalizarMonitorActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-        // TODO add your handling code here:
         //genero el archivo con 30 paquetes
         GeneradorTrafico generador = new GeneradorTrafico();
         generador.generarArchivo(rutaArchivoTrafico, 30);
@@ -378,40 +361,27 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(rutaArchivoTrafico));
             String linea;
-            jTextArea2.append("\n--- REGISTROS GENERADOS ---\n");
+            jTextArea2.append("\n+REGISTROS GENERADOS+\n");
             while ((linea = reader.readLine()) != null) {
                 jTextArea2.append(linea + "\n");
             }
-            jTextArea2.append("--- FIN REGISTROS ---\n\n");
+            jTextArea2.append("+FIN REGISTROS+\n\n");
             reader.close();
         } catch (Exception e) {
-            jTextArea2.append("Error al leer archivo: " + e.getMessage() + "\n");
         }
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
-        // TODO add your handling code here:
-        //verifico que existe el archivo
-        File archivo = new File(rutaArchivoTrafico);
-        if (!archivo.exists()) {
-            jTextArea2.append("ERROR: Primero debes generar el archivo\n");
-            return;
-        }
-        //analizo el archivo
+        // analizo el archivo
         AnalizadorTrafico analizador = new AnalizadorTrafico();
-        int anomalias = analizador.analizarArchivo(rutaArchivoTrafico);
-        jTextArea2.append("--- ANÁLISIS COMPLETADO ---\n");
-        jTextArea2.append("Total de anomalías detectadas: " + anomalias + "\n\n");
+        analizador.analizarArchivo(rutaArchivoTrafico);
+        jTextArea2.append("+ANALISIS COMPLETADO+\n");
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
     private void btnFinalizarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarProcesosActionPerformed
         // TODO add your handling code here:
         //boton Finalizar Procesos
-        if (monitorProcesos != null) {
-            monitorProcesos.detener();
-            jTextArea3.append("Monitor de procesos finalizado\n");
-            jTextArea3.append("Procesos eliminados: " + monitorProcesos.getProcesosEliminados() + "\n");
-        }
+        monitorProcesos.detener();
         //habilitar boton Iniciar
         btnIniciarProcesos.setEnabled(true);
         //deshabilitar boton Finalizar

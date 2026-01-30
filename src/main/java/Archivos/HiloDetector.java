@@ -35,9 +35,6 @@ public class HiloDetector extends Thread {
     public void detener() {
         activo = false;
     }
-    public int getCantidadArchivos() {
-        return monitor.getCantidadArchivos();
-    }
     public int getCambios() {
         return monitor.getCambios();
     }

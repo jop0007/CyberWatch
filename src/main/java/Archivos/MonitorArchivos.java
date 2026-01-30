@@ -6,12 +6,13 @@ import java.io.FileInputStream;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author Valentin
  */
 public class MonitorArchivos {
-    //ArraysLists iniciales de nombre y hashes de los archivos
+    // ArraysLists iniciales de nombre y hashes de los archivos
     private List<String> nombresAnteriores;
     private List<String> hashesAnteriores;
     
@@ -21,27 +22,21 @@ public class MonitorArchivos {
     
     public MonitorArchivos(String rutaCarpeta) {
         carpeta = new File(rutaCarpeta);
-        //listFiles devuevle un array con los archivos de la carpeta
+        // listFiles devuevle un array con los archivos de la carpeta
         File[] archivos = carpeta.listFiles();
         this.rutaCarpeta = rutaCarpeta;
         nombresAnteriores = new ArrayList<>();
         hashesAnteriores = new ArrayList<>();
         cambios = 0;
-        //cargo los archivos iniciales
+        // cargo los archivos iniciales
         rellenarArrays(archivos, nombresAnteriores, hashesAnteriores);
         Log.registrar("INTEGRIDAD", "Monitor iniciado, "+ nombresAnteriores.size() + " archivos encontrados: ");
-        //muestro los archivos encontrados
-        if (nombresAnteriores.size() > 0) {
-            for (int i = 0; i < nombresAnteriores.size(); i++) {
-                Log.registrar("INTEGRIDAD"," "+(i+1) + ". " + nombresAnteriores.get(i));
-            }
+        // muestro los archivos encontrados
+        for (int i = 0; i < nombresAnteriores.size(); i++) {
+            Log.registrar("INTEGRIDAD", "  " + (i+1) + ". " + nombresAnteriores.get(i));
         }
     }
     public void rellenarArrays(File[] archivos, List<String> nombres, List<String> hashes) {
-        //compruebo que el array de archivos no este vacio
-        if (archivos == null) {
-            return;
-        }
         //recorro todos los archivos de la carpeta
         for (int i = 0; i < archivos.length; i++) {
             File archivo = archivos[i];
@@ -56,10 +51,8 @@ public class MonitorArchivos {
         File[] archivos = carpeta.listFiles();
         List<String> nombresActuales = new ArrayList<>();
         List<String> hashesActuales = new ArrayList<>();
-        
         //guardo el estado actual
         rellenarArrays(archivos, nombresActuales, hashesActuales);
-        
         //busco archivos nuevos
         for (int i = 0; i < nombresActuales.size(); i++) {
             String nombreActual = nombresActuales.get(i);
@@ -79,14 +72,15 @@ public class MonitorArchivos {
         //busco archivos eliminados
         for (int i = 0; i < nombresAnteriores.size(); i++) {
             String nombreAnterior = nombresAnteriores.get(i);
-            // compruebo si este archivo sigue existiendo
+            
+            //compruebo si este archivo sigue existiendo
             boolean existe = false;
             for (int j = 0; j < nombresActuales.size(); j++) {
                 if (nombresActuales.get(j).equals(nombreAnterior)) {
                     existe = true;
                 }
             }
-            // si ya no existe es porque se ha eliminado
+            //si ya no existe es porque se ha eliminado
             if (!existe) {
                 Log.registrar("INTEGRIDAD", "El archivo " + nombreAnterior + " ha sido eliminado");
                 cambios++;
@@ -114,7 +108,6 @@ public class MonitorArchivos {
         nombresAnteriores = nombresActuales;
         hashesAnteriores = hashesActuales;
     }
-    
     public String calcularHash(File archivo) {
         try {
             //uso SHA-256 para calcular el hash
@@ -136,13 +129,7 @@ public class MonitorArchivos {
             //si hay error devuelvo vacio
             return "";
         }
-        
     }
-    //getter que devuelve cantidad de Archivos
-    public int getCantidadArchivos() {
-        return nombresAnteriores.size();
-    }
-    //getter que devuelve cantidad de cambios
     public int getCambios() {
         return cambios;
     }
