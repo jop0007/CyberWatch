@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileReader;
 /**
  *
- * @author alumno
+ * @author Valentin
  */
 public class CyberSecurityMonitor extends javax.swing.JFrame {
     
@@ -305,8 +305,7 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         File carpeta = new File(rutaCarpeta);
         if (!carpeta.exists() || !carpeta.isDirectory()) {
             jTextArea1.append("ERROR: La carpeta seleccionada ya no es válida\n");
-
-            // Resetear la selección
+            //Resetear la selección
             rutaCarpeta = null;
             btnIniciarMonitor.setEnabled(false);
             return;
@@ -327,10 +326,8 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         // boton Iniciar Procesos
         monitorProcesos = new MonitorProcesos();
         monitorProcesos.iniciar();
-
         jTextArea3.append("Monitor de procesos iniciado\n");
         jTextArea3.append("Procesos activos: " + monitorProcesos.getCantidadProcesos() + "\n");
-
         // deshabilitar boton Iniciar
         btnIniciarProcesos.setEnabled(false);
         // habilitar boton Finalizar
@@ -342,27 +339,22 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
         JFileChooser ch = new JFileChooser();
         ch.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         ch.setDialogTitle("Seleccionar carpeta");
-
-        // Muestro el diálogo y guardo el resultado
+        //Muestro el diálogo y guardo el resultado
         int resultado = ch.showOpenDialog(this);
-
-        // Si el usuario seleccionó una carpeta (no canceló)
+        //Si el usuario seleccionó una carpeta 
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File carpeta = ch.getSelectedFile();
-
             // Validación: verificar que se puede leer
             if (!carpeta.canRead()) {
                 jTextArea1.append("ERROR: No tienes permisos para leer esta carpeta\n");
                 return;
             }
-            // Todo OK - guardar la ruta seleccionada
+            //guardar la ruta seleccionada
             rutaCarpeta = carpeta.getAbsolutePath();
-            // Mostrar en JTextArea
+            //Mostrar en JTextArea
             jTextArea1.append("Carpeta seleccionada: " + carpeta.getName() + "\n");
-            // Habilitar el botón Iniciar
+            //Habilitar el botón Iniciar
             btnIniciarMonitor.setEnabled(true);
-
-            // Registrar en el log
             Log.registrar("INTEGRIDAD", "Carpeta seleccionada: " + rutaCarpeta);
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
@@ -379,20 +371,18 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
-        // genero el archivo con 30 paquetes
+        //genero el archivo con 30 paquetes
         GeneradorTrafico generador = new GeneradorTrafico();
         generador.generarArchivo(rutaArchivoTrafico, 30);
-        // ahora leo el archivo generado y lo muestro en el textarea
+        //ahora leo el archivo generado y lo muestro en el textarea
         try {
             BufferedReader reader = new BufferedReader(new FileReader(rutaArchivoTrafico));
             String linea;
-
             jTextArea2.append("\n--- REGISTROS GENERADOS ---\n");
             while ((linea = reader.readLine()) != null) {
                 jTextArea2.append(linea + "\n");
             }
             jTextArea2.append("--- FIN REGISTROS ---\n\n");
-
             reader.close();
         } catch (Exception e) {
             jTextArea2.append("Error al leer archivo: " + e.getMessage() + "\n");
@@ -401,13 +391,13 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         // TODO add your handling code here:
-        // verifico que existe el archivo
+        //verifico que existe el archivo
         File archivo = new File(rutaArchivoTrafico);
         if (!archivo.exists()) {
             jTextArea2.append("ERROR: Primero debes generar el archivo\n");
             return;
         }
-        // analizo el archivo
+        //analizo el archivo
         AnalizadorTrafico analizador = new AnalizadorTrafico();
         int anomalias = analizador.analizarArchivo(rutaArchivoTrafico);
         jTextArea2.append("--- ANÁLISIS COMPLETADO ---\n");
@@ -416,16 +406,15 @@ public class CyberSecurityMonitor extends javax.swing.JFrame {
 
     private void btnFinalizarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarProcesosActionPerformed
         // TODO add your handling code here:
-        // boton Finalizar Procesos
+        //boton Finalizar Procesos
         if (monitorProcesos != null) {
             monitorProcesos.detener();
             jTextArea3.append("Monitor de procesos finalizado\n");
             jTextArea3.append("Procesos eliminados: " + monitorProcesos.getProcesosEliminados() + "\n");
         }
-
-        // habilitar boton Iniciar
+        //habilitar boton Iniciar
         btnIniciarProcesos.setEnabled(true);
-        // deshabilitar boton Finalizar
+        //deshabilitar boton Finalizar
         btnFinalizarProcesos.setEnabled(false);
     }//GEN-LAST:event_btnFinalizarProcesosActionPerformed
 

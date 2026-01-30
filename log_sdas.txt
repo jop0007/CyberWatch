@@ -230,3 +230,168 @@
 [19:54:38] [PROCESOS] Proceso rat.exe eliminado (encontrado en lista negra)
 [19:54:48] [PROCESOS] Simulacion finalizada
 [19:54:48] [PROCESOS] Procesos eliminados: 1
+[21:49:35] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos
+[21:49:38] [INTEGRIDAD] Monitor iniciado
+[21:49:38] [INTEGRIDAD] Escaneo inicial completado: 8 archivos
+[21:49:38] [INTEGRIDAD] Hilo detector creado
+[21:49:38] [INTEGRIDAD] Iniciando monitoreo continuo
+[21:52:25] [INTEGRIDAD] Deteniendo monitoreo...
+[21:52:26] [INTEGRIDAD] Monitoreo finalizado
+[21:52:26] [INTEGRIDAD] Total de cambios detectados: 0
+[21:56:17] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos
+[21:56:20] [INTEGRIDAD] Monitor iniciado
+[21:56:20] [INTEGRIDAD] Escaneo inicial completado: 8 archivos encontrados
+[21:56:20] [INTEGRIDAD]   1. BASE DE DATOS DE DEPORTE_ PARTE 1.pdf
+[21:56:20] [INTEGRIDAD]   2. ConsultasDeportesValentinOcampo.pdf
+[21:56:20] [INTEGRIDAD]   3. Diagrama ER.png
+[21:56:20] [INTEGRIDAD]   4. diagramaRelacional.png
+[21:56:20] [INTEGRIDAD]   5. OcampoPoloValentin_BaseDatos.zip
+[21:56:20] [INTEGRIDAD]   6. OcampoValentin_CreacionDatos.zip
+[21:56:20] [INTEGRIDAD]   7. PeluqueriaPSP.zip
+[21:56:20] [INTEGRIDAD]   8. ProyectoPeluqueria.zip
+[21:56:20] [INTEGRIDAD] Iniciando detección de cambios en los archivos
+[21:56:33] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos\Datos
+[21:56:38] [INTEGRIDAD] Monitor iniciado
+[21:56:38] [INTEGRIDAD] Escaneo inicial completado: 6 archivos encontrados
+[21:56:38] [INTEGRIDAD]   1. actividad.csv
+[21:56:38] [INTEGRIDAD]   2. atenciones.csv
+[21:56:38] [INTEGRIDAD]   3. clientes.csv
+[21:56:38] [INTEGRIDAD]   4. detalles.csv
+[21:56:38] [INTEGRIDAD]   5. facturas.csv
+[21:56:38] [INTEGRIDAD]   6. nuevo.csv
+[21:56:38] [INTEGRIDAD] Iniciando detección de cambios en los archivos
+[21:58:30] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos\Datos
+[21:58:34] [INTEGRIDAD] Monitor iniciado, 6 archivos encontrados: 
+[21:58:34] [INTEGRIDAD] 1. actividad.csv
+[21:58:34] [INTEGRIDAD] 2. atenciones.csv
+[21:58:34] [INTEGRIDAD] 3. clientes.csv
+[21:58:34] [INTEGRIDAD] 4. detalles.csv
+[21:58:34] [INTEGRIDAD] 5. facturas.csv
+[21:58:34] [INTEGRIDAD] 6. nuevo.csv
+[21:58:34] [INTEGRIDAD] Iniciando detección de cambios en los archivos
+[22:00:30] [INTEGRIDAD] Carpeta seleccionada: C:\Users\valen\Documents\DAM2\Acceso a Datos\Datos
+[22:00:32] [INTEGRIDAD] Monitor iniciado, 6 archivos encontrados: 
+[22:00:32] [INTEGRIDAD] 1. actividad.csv
+[22:00:32] [INTEGRIDAD] 2. atenciones.csv
+[22:00:32] [INTEGRIDAD] 3. clientes.csv
+[22:00:32] [INTEGRIDAD] 4. detalles.csv
+[22:00:32] [INTEGRIDAD] 5. facturas.csv
+[22:00:32] [INTEGRIDAD] 6. nuevo.csv
+[22:00:32] [INTEGRIDAD] Detectando cambios... 
+[22:01:11] [INTEGRIDAD] El archivo detalles.csv ha sido modificado
+[22:01:22] [INTEGRIDAD] Deteniendo monitoreo...
+[22:01:23] [INTEGRIDAD] Monitoreo finalizado
+[22:01:23] [INTEGRIDAD] Total de cambios detectados: 1
+[22:23:02] [RED] Generando archivo de trafico...
+[22:23:02] [RED] Archivo generado con 40 frames
+[22:44:46] [RED] Analizando trafico...
+[22:44:46] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[22:44:46] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[22:44:46] [RED] Frame 16: Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[22:44:46] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[22:44:46] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[22:44:46] [RED] Frame 28: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:44:46] [RED] Frame 29: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:44:46] [RED] Frame 30: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:44:46] [RED] Frame 31: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:44:46] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[22:44:46] [RED] Analisis completado: 40 frames analizados
+[22:44:46] [RED] Anomalias detectadas: 10
+[22:47:29] [RED] Generando archivo de trafico...
+[22:47:29] [RED] Archivo generado con 40 frames
+[22:47:35] [RED] Analizando trafico...
+[22:47:35] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[22:47:35] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[22:47:35] [RED] Frame 16: Escaneo detectado desde 45.123.67.89 (5+ conexiones consecutivas)
+[22:47:35] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[22:47:35] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[22:47:35] [RED] Frame 28: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:47:35] [RED] Frame 29: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:47:35] [RED] Frame 30: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:47:35] [RED] Frame 31: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:47:35] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 1337
+[22:47:35] [RED] Analisis completado: 40 frames analizados
+[22:47:35] [RED] Anomalias detectadas: 10
+[22:53:34] [RED] Generando archivo de trafico...
+[22:53:34] [RED] Archivo generado con 40 frames
+[22:53:36] [RED] Analizando trafico...
+[22:53:36] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[22:53:36] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[22:53:36] [RED] Frame 16: Escaneo detectado desde 45.123.67.89 (5+ conexiones o mas consecutivas)
+[22:53:36] [RED] Frame 17: Escaneo detectado desde 45.123.67.89 (5+ conexiones o mas consecutivas)
+[22:53:36] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[22:53:36] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[22:53:36] [RED] Frame 28: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:53:36] [RED] Frame 29: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:53:36] [RED] Frame 30: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:53:36] [RED] Frame 31: Trafico anomalo desde 203.0.113.42 (multiples conexiones en el mismo segundo)
+[22:53:36] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[22:53:36] [RED] Analisis completado: 40 frames analizados
+[22:53:36] [RED] Anomalias detectadas: 11
+[23:09:36] [PROCESOS] Iniciando simulacion de procesos
+[23:09:36] [PROCESOS] No se encontro lista negra previa
+[23:09:36] [PROCESOS] Generando 5 procesos:
+[23:09:36] [PROCESOS]   1. stealer.exe (CPU: 87%)
+[23:09:36] [PROCESOS]   2. rat.exe (CPU: 91%)
+[23:09:36] [PROCESOS]   3. excel.exe (CPU: 32%)
+[23:09:36] [PROCESOS]   4. vlc.exe (CPU: 12%)
+[23:09:36] [PROCESOS]   5. excel.exe (CPU: 32%)
+[23:09:54] [PROCESOS] Proceso stealer.exe excede uso de CPU (87% durante 17 segundos)
+[23:09:54] [PROCESOS] Proceso stealer.exe añadido a lista negra
+[23:09:54] [PROCESOS] Proceso rat.exe excede uso de CPU (91% durante 17 segundos)
+[23:09:54] [PROCESOS] Proceso rat.exe añadido a lista negra
+[23:10:11] [PROCESOS] Simulacion finalizada
+[23:10:11] [PROCESOS] Procesos eliminados: 2
+[23:10:12] [PROCESOS] Iniciando simulacion de procesos
+[23:10:12] [PROCESOS] No se encontro lista negra previa
+[23:10:12] [PROCESOS] Generando 5 procesos:
+[23:10:12] [PROCESOS]   1. rootkit.exe (CPU: 90%)
+[23:10:12] [PROCESOS]   2. cryptolocker.exe (CPU: 97%)
+[23:10:12] [PROCESOS]   3. notepad.exe (CPU: 5%)
+[23:10:12] [PROCESOS]   4. chrome.exe (CPU: 25%)
+[23:10:12] [PROCESOS]   5. ransomware.exe (CPU: 94%)
+[23:10:19] [PROCESOS] Simulacion finalizada
+[23:10:19] [PROCESOS] Procesos eliminados: 0
+[23:14:31] [PROCESOS] Iniciando simulacion de procesos
+[23:14:31] [PROCESOS] No se encontro lista negra previa
+[23:14:31] [PROCESOS] Generando 5 procesos:
+[23:14:31] [PROCESOS]   1. ddos.exe (CPU: 96%)
+[23:14:31] [PROCESOS]   2. photoshop.exe (CPU: 45%)
+[23:14:31] [PROCESOS]   3. cryptolocker.exe (CPU: 97%)
+[23:14:31] [PROCESOS]   4. teams.exe (CPU: 35%)
+[23:14:31] [PROCESOS]   5. trojan.exe (CPU: 92%)
+[23:14:49] [PROCESOS] Proceso ddos.exe excede uso de CPU (96% durante 17 segundos)
+[23:14:49] [PROCESOS] Proceso ddos.exe añadido a lista negra
+[23:14:49] [PROCESOS] Proceso cryptolocker.exe excede uso de CPU (97% durante 17 segundos)
+[23:14:49] [PROCESOS] Proceso cryptolocker.exe añadido a lista negra
+[23:14:49] [PROCESOS] Proceso trojan.exe excede uso de CPU (92% durante 17 segundos)
+[23:14:49] [PROCESOS] Proceso trojan.exe añadido a lista negra
+[23:16:35] [PROCESOS] Simulacion finalizada
+[23:16:35] [PROCESOS] Procesos eliminados: 3
+[23:16:35] [PROCESOS] Iniciando simulacion de procesos
+[23:16:35] [PROCESOS] Lista negra cargada: 3 procesos
+[23:16:35] [PROCESOS]   - ddos.exe
+[23:16:35] [PROCESOS]   - cryptolocker.exe
+[23:16:35] [PROCESOS]   - trojan.exe
+[23:16:35] [PROCESOS] Generando 5 procesos:
+[23:16:35] [PROCESOS]   1. zoom.exe (CPU: 27%)
+[23:16:35] [PROCESOS]   2. spotify.exe (CPU: 20%)
+[23:16:35] [PROCESOS]   3. notepad.exe (CPU: 5%)
+[23:16:35] [PROCESOS]   4. vlc.exe (CPU: 12%)
+[23:16:35] [PROCESOS]   5. discord.exe (CPU: 18%)
+[23:17:27] [PROCESOS] Simulacion finalizada
+[23:17:27] [PROCESOS] Procesos eliminados: 0
+[23:17:28] [PROCESOS] Iniciando simulacion de procesos
+[23:17:28] [PROCESOS] Lista negra cargada: 3 procesos
+[23:17:28] [PROCESOS]   - ddos.exe
+[23:17:28] [PROCESOS]   - cryptolocker.exe
+[23:17:28] [PROCESOS]   - trojan.exe
+[23:17:28] [PROCESOS] Generando 5 procesos:
+[23:17:28] [PROCESOS]   1. trojan.exe (CPU: 92%)
+[23:17:28] [PROCESOS]   2. steam.exe (CPU: 40%)
+[23:17:28] [PROCESOS]   3. outlook.exe (CPU: 22%)
+[23:17:28] [PROCESOS]   4. vlc.exe (CPU: 12%)
+[23:17:28] [PROCESOS]   5. keylogger.exe (CPU: 85%)
+[23:17:31] [PROCESOS] Proceso trojan.exe eliminado (encontrado en lista negra)
+[23:17:44] [PROCESOS] Simulacion finalizada
+[23:17:44] [PROCESOS] Procesos eliminados: 1

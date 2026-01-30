@@ -1,12 +1,15 @@
 package Procesos;
-
-public class Proceso extends Thread {
+/**
+ *
+ * @author Valentin
+ */
+public class Procesos extends Thread {
     private String nombre;
     private int cpu;
     private int tiempoVivo;
     private boolean activo;
     
-    public Proceso(String nombre, int cpu) {
+    public Procesos(String nombre, int cpu) {
         this.nombre = nombre;
         this.cpu = cpu;
         this.tiempoVivo = 0;
@@ -15,13 +18,13 @@ public class Proceso extends Thread {
     
     @Override
     public void run() {
-        // el proceso se ejecuta mientras este activo
+        //el proceso se ejecuta mientras este activo
         while (activo) {
             try {
-                Thread.sleep(1000);  // espero 1 segundo
-                tiempoVivo++;  // incremento el tiempo que lleva vivo
+                Thread.sleep(1000);//espero 1 segundo
+                tiempoVivo++;//incremento el tiempo que lleva vivo
             } catch (InterruptedException e) {
-                // si me interrumpen salgo del bucle
+                //si me interrumpen salgo del bucle
                 activo = false;
             }
         }

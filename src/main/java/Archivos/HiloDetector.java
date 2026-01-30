@@ -1,7 +1,10 @@
 package Archivos;
 
 import Logs.Log;
-
+/**
+ *
+ * @author Valentin
+ */
 public class HiloDetector extends Thread {
     private MonitorArchivos monitor;
     private boolean activo;
@@ -10,37 +13,31 @@ public class HiloDetector extends Thread {
         monitor = new MonitorArchivos(rutaCarpeta);
         activo = false;
         this.setDaemon(true);
-        Log.registrar("INTEGRIDAD", "Hilo detector creado");
     }
     
     @Override
     public void run() {
         activo = true;
-        Log.registrar("INTEGRIDAD", "Iniciando monitoreo continuo");
-        
-        // bucle principal de monitoreo
+        Log.registrar("INTEGRIDAD", "Detectando cambios... ");
         while (activo) {
             try {
-                Thread.sleep(3000); // reviso cada 3 segundos
+                Thread.sleep(3000); //reviso cada 3 segundos
                 monitor.detectarCambios();
             } catch (InterruptedException e) {
-                Log.registrar("INTEGRIDAD", "Monitoreo interrumpido");
+                activo=false;
+                Log.registrar("INTEGRIDAD", "Deteccion de cambios interrumpida");
             }
         }
-        
-        Log.registrar("INTEGRIDAD", "Monitoreo finalizado");
-        Log.registrar("INTEGRIDAD", "Total de cambios detectados: " + monitor.getCambios());
+        Log.registrar("INTEGRIDAD", "Deteccion de cambios finalizada");
+        Log.registrar("INTEGRIDAD", "Cambios totales detectados: " + monitor.getCambios());
     }
-    
+    //cambia es estado
     public void detener() {
         activo = false;
-        Log.registrar("INTEGRIDAD", "Deteniendo monitoreo...");
     }
-    
     public int getCantidadArchivos() {
         return monitor.getCantidadArchivos();
     }
-    
     public int getCambios() {
         return monitor.getCambios();
     }

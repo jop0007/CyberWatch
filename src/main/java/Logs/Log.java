@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JTextArea;
-
+/**
+ *
+ * @author Valentin
+ */
 public class Log {
     // constante con el nombre del archivo de logs
     private static final String archivo = "log_sdas.txt";

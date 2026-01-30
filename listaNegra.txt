@@ -1,0 +1,3 @@
+ddos.exe
+cryptolocker.exe
+trojan.exe

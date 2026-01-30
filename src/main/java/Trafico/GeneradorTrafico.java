@@ -2,44 +2,63 @@ package Trafico;
 
 import Logs.Log;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.util.Random;
 
+/**
+ *
+ * @author Valentin
+ */
 public class GeneradorTrafico {
     
     public void generarArchivo(String ruta, int cantidad) {
         Log.registrar("RED", "Generando archivo de trafico...");
         
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
+            // creo el archivo de trafico
+            File archivo = new File(ruta);
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
             Random random = new Random();
             
+            // configuracion inicial del tiempo
             int hora = 14;
             int minuto = 30;
             int segundo = 0;
             int frame = 1;
+            String protocolo = "TCP";
             
+            // genero las lineas de trafico
             for (int i = 0; i < cantidad; i++) {
                 String tiempo = String.format("[%02d:%02d:%02d]", hora, minuto, segundo);
-                String ipOrigen = "192.168.1." + (100 + random.nextInt(4));
+                String ipOrigen = "192.168.1." + (100 + random.nextInt(5));
                 String ipDestino = "8.8.8.8";
-                String protocolo = "TCP";
-                int puerto = 443;
+                int puerto;
                 int bytes = 500 + random.nextInt(1500);
                 
-                // genero trafico normal
-                int tipo = random.nextInt(100);
-                if (tipo < 50) {
-                    puerto = 80;
-                } else if (tipo < 90) {
-                    puerto = 443;
+                // genero trafico normal con puertos comunes
+                int tipoPuerto = random.nextInt(100);
+                if (tipoPuerto < 30) {
+                    puerto = 80;  // HTTP
+                } else if (tipoPuerto < 55) {
+                    puerto = 443;  // HTTPS
+                } else if (tipoPuerto < 70) {
+                    puerto = 22;  // SSH
+                } else if (tipoPuerto < 80) {
+                    puerto = 53;  // DNS
+                } else if (tipoPuerto < 90) {
+                    puerto = 3306;  // MySQL
+                } else {
+                    puerto = 8080;  // HTTP alternativo
                 }
                 
-                // ANOMALIA 1: puertos sospechosos
-                if (i % 5 == 0 && i > 0) {
+                //inserto puertos sospechosos cada 5 lineas
+                if (i % 5 == 0 && i != 0) {
                     ipOrigen = "10.0.0.5";
                     ipDestino = "192.168.1.100";
                     
+                    // elijo un puerto sospechoso aleatorio
                     int cual = random.nextInt(5);
                     if (cual == 0) puerto = 31337;
                     else if (cual == 1) puerto = 4444;
@@ -48,16 +67,17 @@ public class GeneradorTrafico {
                     else puerto = 12345;
                 }
                 
-                // escribo la linea
+                // escribo la linea en el archivo
                 String linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + 
                               ipDestino + " " + protocolo + " " + puerto + " " + bytes;
-                writer.write(linea);
-                writer.newLine();
+                bw.write(linea);
+                bw.newLine();
                 frame++;
                 
-                // ANOMALIA 2: ips repetidas (escaneo)
+                //genero 6 conexiones seguidas con la misma IP en la posicion 10
                 if (i == 10) {
                     ipOrigen = "45.123.67.89";
+                    // creo 6 lineas consecutivas con la misma IP
                     for (int j = 0; j < 6; j++) {
                         segundo++;
                         tiempo = String.format("[%02d:%02d:%02d]", hora, minuto, segundo);
@@ -65,27 +85,27 @@ public class GeneradorTrafico {
                         puerto = 22 + (j * 10);
                         linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + 
                                ipDestino + " " + protocolo + " " + puerto + " " + bytes;
-                        writer.write(linea);
-                        writer.newLine();
+                        bw.write(linea);
+                        bw.newLine();
                         frame++;
                     }
                 }
                 
-                // ANOMALIA 3: muchas conexiones en el mismo segundo
+                //genero 4 conexiones en el mismo segundo en la posicion 20
                 if (i == 20) {
                     ipOrigen = "203.0.113.42";
                     ipDestino = "192.168.1.100";
+                    // creo 4 lineas con el mismo tiempo
                     for (int j = 0; j < 4; j++) {
                         tiempo = String.format("[%02d:%02d:%02d]", hora, minuto, segundo);
                         linea = "Frame " + frame + " " + tiempo + " " + ipOrigen + " " + 
                                ipDestino + " " + protocolo + " " + 80 + " " + bytes;
-                        writer.write(linea);
-                        writer.newLine();
+                        bw.write(linea);
+                        bw.newLine();
                         frame++;
                     }
                 }
-                
-                // avanzo el tiempo
+                // avanzo el tiempo en 1 segundo
                 segundo++;
                 
                 // ajusto minutos y horas si es necesario
@@ -99,7 +119,8 @@ public class GeneradorTrafico {
                 }
             }
             
-            writer.close();
+            // cierro el archivo
+            bw.close();
             
             Log.registrar("RED", "Archivo generado con " + (frame - 1) + " frames");
             

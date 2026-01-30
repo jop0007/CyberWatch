@@ -4,3 +4,5 @@
 [19:54:16] worm.exe - CPU: 89%, Tiempo: 17s
 [19:54:16] rootkit.exe - CPU: 90%, Tiempo: 18s
 [19:54:16] backdoor.exe - CPU: 88%, Tiempo: 18s
+stealer.exe
+rat.exe
