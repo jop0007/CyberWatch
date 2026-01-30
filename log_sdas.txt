@@ -395,3 +395,99 @@
 [23:17:31] [PROCESOS] Proceso trojan.exe eliminado (encontrado en lista negra)
 [23:17:44] [PROCESOS] Simulacion finalizada
 [23:17:44] [PROCESOS] Procesos eliminados: 1
+[09:23:43] [PROCESOS] Iniciando simulacion de procesos
+[09:23:43] [PROCESOS] Lista negra cargada: 3 procesos
+[09:23:43] [PROCESOS]   - ddos.exe
+[09:23:43] [PROCESOS]   - cryptolocker.exe
+[09:23:43] [PROCESOS]   - trojan.exe
+[09:23:43] [PROCESOS] Generando 5 procesos:
+[09:23:43] [PROCESOS]   1. explorer.exe (CPU: 15%)
+[09:23:43] [PROCESOS]   2. miner.exe (CPU: 95%)
+[09:23:43] [PROCESOS]   3. steam.exe (CPU: 40%)
+[09:23:43] [PROCESOS]   4. miner.exe (CPU: 95%)
+[09:23:43] [PROCESOS]   5. adware.exe (CPU: 81%)
+[09:24:01] [PROCESOS] Proceso miner.exe excede uso de CPU (95% durante 17 segundos)
+[09:24:01] [PROCESOS] Proceso miner.exe añadido a lista negra
+[09:24:01] [PROCESOS] Proceso miner.exe eliminado (encontrado en lista negra)
+[09:24:01] [PROCESOS] Proceso adware.exe excede uso de CPU (81% durante 18 segundos)
+[09:24:01] [PROCESOS] Proceso adware.exe añadido a lista negra
+[09:24:15] [PROCESOS] Simulacion finalizada
+[09:24:15] [PROCESOS] Procesos eliminados: 3
+[09:24:20] [PROCESOS] Iniciando simulacion de procesos
+[09:24:20] [PROCESOS] Lista negra cargada: 5 procesos
+[09:24:20] [PROCESOS]   - ddos.exe
+[09:24:20] [PROCESOS]   - cryptolocker.exe
+[09:24:20] [PROCESOS]   - trojan.exe
+[09:24:20] [PROCESOS]   - miner.exe
+[09:24:20] [PROCESOS]   - adware.exe
+[09:24:20] [PROCESOS] Generando 5 procesos:
+[09:24:20] [PROCESOS]   1. rootkit.exe (CPU: 90%)
+[09:24:20] [PROCESOS]   2. word.exe (CPU: 28%)
+[09:24:20] [PROCESOS]   3. spotify.exe (CPU: 20%)
+[09:24:20] [PROCESOS]   4. adware.exe (CPU: 81%)
+[09:24:20] [PROCESOS]   5. chrome.exe (CPU: 25%)
+[09:24:23] [PROCESOS] Proceso adware.exe eliminado (encontrado en lista negra)
+[09:24:38] [PROCESOS] Proceso rootkit.exe excede uso de CPU (90% durante 17 segundos)
+[09:24:38] [PROCESOS] Proceso rootkit.exe añadido a lista negra
+[09:25:13] [PROCESOS] Simulacion finalizada
+[09:25:13] [PROCESOS] Procesos eliminados: 2
+[09:37:24] [RED] Generando archivo de trafico...
+[09:37:24] [RED] Archivo generado con 40 frames
+[09:37:25] [RED] Analizando trafico...
+[09:37:25] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[09:37:25] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[09:37:25] [RED] Frame 16: 45.123.67.89 5 conexiones o mas consecutivas)
+[09:37:25] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 6667
+[09:37:25] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[09:37:25] [RED] Frame 28: 203.0.113.42 multiples conexiones en el mismo segundo
+[09:37:25] [RED] Frame 29: 203.0.113.42 multiples conexiones en el mismo segundo
+[09:37:25] [RED] Frame 30: 203.0.113.42 multiples conexiones en el mismo segundo
+[09:37:25] [RED] Frame 31: 203.0.113.42 multiples conexiones en el mismo segundo
+[09:37:25] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 12345
+[09:37:25] [RED] Analisis completado: 40 frames analizados
+[09:37:25] [RED] Anomalias detectadas: 10
+[10:01:45] [INTEGRIDAD] Carpeta seleccionada: C:\Users\alumno\Documents\DAM 2\Acceso a  Datos
+[10:01:48] [INTEGRIDAD] Monitor iniciado, 2 archivos encontrados: 
+[10:01:48] [INTEGRIDAD]  1. EjercicioPython1.py
+[10:01:48] [INTEGRIDAD]  2. EjercicioPython2.py
+[10:01:48] [INTEGRIDAD] Detectando cambios... 
+[10:02:06] [INTEGRIDAD] El archivo EjercicioPython2.py ha sido modificado
+[10:02:09] [INTEGRIDAD] El archivo Nuevo Documento de texto.txt ha sido creado
+[10:02:12] [INTEGRIDAD] El archivo fs.txt ha sido creado
+[10:02:12] [INTEGRIDAD] El archivo Nuevo Documento de texto.txt ha sido eliminado
+[10:02:42] [INTEGRIDAD] Deteccion de cambios finalizada
+[10:02:42] [INTEGRIDAD] Cambios totales detectados: 4
+[10:02:51] [RED] Generando archivo de trafico...
+[10:02:51] [RED] Archivo generado con 40 frames
+[10:02:56] [PROCESOS] Iniciando simulacion de procesos
+[10:02:56] [PROCESOS] Lista negra cargada: 6 procesos
+[10:02:56] [PROCESOS]   - ddos.exe
+[10:02:56] [PROCESOS]   - cryptolocker.exe
+[10:02:56] [PROCESOS]   - trojan.exe
+[10:02:56] [PROCESOS]   - miner.exe
+[10:02:56] [PROCESOS]   - adware.exe
+[10:02:56] [PROCESOS]   - rootkit.exe
+[10:02:56] [PROCESOS] Generando 5 procesos:
+[10:02:56] [PROCESOS]   1. firefox.exe (CPU: 30%)
+[10:02:56] [PROCESOS]   2. keylogger.exe (CPU: 85%)
+[10:02:56] [PROCESOS]   3. steam.exe (CPU: 40%)
+[10:02:56] [PROCESOS]   4. spotify.exe (CPU: 20%)
+[10:02:56] [PROCESOS]   5. cryptolocker.exe (CPU: 97%)
+[10:02:59] [RED] Analizando trafico...
+[10:02:59] [RED] Frame 6: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[10:02:59] [RED] Frame 11: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[10:02:59] [RED] Frame 16: 45.123.67.89 5 conexiones o mas consecutivas)
+[10:02:59] [RED] Frame 22: Conexion sospechosa detectada desde 10.0.0.5 al puerto 4444
+[10:02:59] [RED] Frame 27: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[10:02:59] [RED] Frame 28: 203.0.113.42 multiples conexiones en el mismo segundo
+[10:02:59] [RED] Frame 29: 203.0.113.42 multiples conexiones en el mismo segundo
+[10:02:59] [RED] Frame 30: 203.0.113.42 multiples conexiones en el mismo segundo
+[10:02:59] [RED] Frame 31: 203.0.113.42 multiples conexiones en el mismo segundo
+[10:02:59] [RED] Frame 36: Conexion sospechosa detectada desde 10.0.0.5 al puerto 31337
+[10:02:59] [RED] Analisis completado: 40 frames analizados
+[10:02:59] [RED] Anomalias detectadas: 10
+[10:02:59] [PROCESOS] Proceso cryptolocker.exe eliminado (encontrado en lista negra)
+[10:03:15] [PROCESOS] Proceso keylogger.exe excede uso de CPU (85% durante 17 segundos)
+[10:03:15] [PROCESOS] Proceso keylogger.exe añadido a lista negra
+[10:04:43] [PROCESOS] Simulacion finalizada
+[10:04:43] [PROCESOS] Procesos eliminados: 2

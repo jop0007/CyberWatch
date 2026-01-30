@@ -122,11 +122,11 @@ public class MonitorProcesos extends Thread {
             Procesos p = procesos.get(i);
             
             if (!p.isActivo()) {
-                continue;  // ya esta muerto, lo ignoro
+                continue;  //ya esta muerto, lo ignoro
             }
             
             //Compruebo si esta en la listaNegra
-            if (estaEnBlacklist(p.getNombre())) {
+            if (estaEnListaNegra(p.getNombre())) {
                 p.detener();
                 Log.registrar("PROCESOS", "Proceso " + p.getNombre() + 
                              " eliminado (encontrado en lista negra)");
@@ -147,7 +147,7 @@ public class MonitorProcesos extends Thread {
             }
         }
     }
-    private boolean estaEnBlacklist(String nombre) {
+    private boolean estaEnListaNegra(String nombre) {
         for (int i = 0; i < listaNegra.size(); i++) {
             if (listaNegra.get(i).equals(nombre)) {
                 return true;
@@ -157,7 +157,7 @@ public class MonitorProcesos extends Thread {
     }
     private void añadirAListaNegra(String nombre) {
         //verifico que no este ya en la lista
-        if (estaEnBlacklist(nombre)) {
+        if (estaEnListaNegra(nombre)) {
             return;
         }
         listaNegra.add(nombre);
